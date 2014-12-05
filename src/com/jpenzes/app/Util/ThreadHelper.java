@@ -1,4 +1,4 @@
-package com.jpenzes.app.Util;
+package com.jpenzes.app.util;
 
 /**
  * Author: Jirka Penzes

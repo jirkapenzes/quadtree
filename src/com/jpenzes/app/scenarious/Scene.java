@@ -1,6 +1,6 @@
 package com.jpenzes.app.scenarious;
 
-import com.jpenzes.app.Util.ThreadHelper;
+import com.jpenzes.app.util.ThreadHelper;
 import com.jpenzes.tree.*;
 import com.jpenzes.tree.Rectangle;
 
