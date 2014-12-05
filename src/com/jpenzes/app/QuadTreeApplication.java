@@ -9,12 +9,9 @@ import javax.swing.*;
 public class QuadTreeApplication {
 
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                QuadTreeFrame mainFrame = new QuadTreeFrame();
-                mainFrame.show();
-            }
+        SwingUtilities.invokeLater(() -> {
+            QuadTreeFrame mainFrame = new QuadTreeFrame();
+            mainFrame.show();
         });
     }
 }

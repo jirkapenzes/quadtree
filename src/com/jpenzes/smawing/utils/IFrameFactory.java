@@ -1,6 +1,7 @@
 package com.jpenzes.smawing.utils;
 
 import javax.swing.*;
+import java.awt.*;
 
 /**
  * Author: Jirka Penzes
@@ -9,6 +10,8 @@ import javax.swing.*;
 public interface IFrameFactory {
 
     JFrame frame(String title, JComponent contentPane);
+
+    JFrame frame(String title, JComponent contentPane, Dimension dimension);
 
     JFrame frame(String title, JComponent contentPane, JMenuBar menuBar);
 

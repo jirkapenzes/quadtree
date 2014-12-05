@@ -1,6 +1,7 @@
 package com.jpenzes.app.view;
 
 import com.jpenzes.app.model.MenuModel;
+import com.jpenzes.app.model.QuadTreeModel;
 import com.jpenzes.smawing.SFrame;
 import com.jpenzes.smawing.SView;
 import com.jpenzes.ui.MenuPanel;
@@ -22,11 +23,49 @@ public class MenuView extends SView<MenuModel> {
     @Override
     protected JComponent layout() {
         if (menuPanel == null)
-            menuPanel = new MenuPanel(getModel().getStartButtonText());
+            menuPanel = new MenuPanel(getModel().getUiLabels());
+
+        updateView();
         return menuPanel;
     }
 
+    public JButton getStartButton() {
+        return menuPanel.getStartButton();
+    }
+
+    public JButton getPauseButton() {
+        return menuPanel.getPauseButton();
+    }
+
+    public JButton getClearButton() {
+        return menuPanel.getClearButton();
+    }
+
+    public JCheckBox getGridCheckbox() {
+        return menuPanel.getGridCheckbox();
+    }
+
+    public JCheckBox getColorCheckbox() {
+        return menuPanel.getColorCheckbox();
+    }
+
+    public JComboBox<Object> getSceneComboBox() {
+        return menuPanel.getSceneComboBox();
+    }
+
+    public JRadioButton getSpeedSlowRadioButton() {
+        return menuPanel.getSpeedSlowRadioButton();
+    }
+
+    public JRadioButton getSpeedFastRadioButton() {
+        return menuPanel.getSpeedFastRadioButton();
+    }
+
     @Override
-    protected void updateView() {
+    public void updateView() {
+        getGridCheckbox().setSelected(getModel().isGrid());
+        getColorCheckbox().setSelected(getModel().isCellBackgroundColor());
+        getSpeedFastRadioButton().setSelected(getMainFrame().getModel(QuadTreeModel.class).getSpeed() == QuadTreeModel.SpeedFast);
+        getSpeedSlowRadioButton().setSelected(getMainFrame().getModel(QuadTreeModel.class).getSpeed() == QuadTreeModel.SpeedSlow);
     }
 }

@@ -1,5 +1,6 @@
 package com.jpenzes.app.view;
 
+import com.jpenzes.app.model.MenuModel;
 import com.jpenzes.app.model.QuadTreeModel;
 import com.jpenzes.smawing.SFrame;
 import com.jpenzes.smawing.SView;
@@ -22,13 +23,18 @@ public class QuadTreeView extends SView<QuadTreeModel> {
     @Override
     protected JComponent layout() {
         if (quadTreePanel == null) {
-            quadTreePanel = new QuadTreePanel();
+            quadTreePanel = new QuadTreePanel(16, getModel().getScene());
         }
         return quadTreePanel;
     }
 
     @Override
-    protected void updateView() {
+    public void updateView() {
+        boolean isGrid = getMainFrame().getModel(MenuModel.class).isGrid();
+        boolean isCellBackgroundColor = getMainFrame().getModel(MenuModel.class).isCellBackgroundColor();
 
+        quadTreePanel.setGrid(isGrid);
+        quadTreePanel.setCellBackgroundColor(isCellBackgroundColor);
+        quadTreePanel.setScene(getModel().getScene());
     }
 }

@@ -44,6 +44,6 @@ public class QuadTreeFrame extends SFrame {
         JPanel contentPane = new JPanel(new BorderLayout());
         contentPane.add(getView(MenuView.class).getContentPane(), BorderLayout.SOUTH);
         contentPane.add(getView(QuadTreeView.class).getContentPane(), BorderLayout.CENTER);
-        return getFrameFactory().frame("Quad tree demo", contentPane);
+        return getFrameFactory().frame("QuadTree demo by @jirkapenzes", contentPane, new Dimension(1024, 582));
     }
 }

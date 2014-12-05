@@ -11,7 +11,19 @@ public class SDefaultFrameFactory implements IFrameFactory {
 
     @Override
     public JFrame frame(String title, JComponent contentPane) {
-        return frame(title, contentPane, null);
+        return frame(title, contentPane, new Dimension(1000, 600));
+    }
+
+    @Override
+    public JFrame frame(String title, JComponent contentPane, Dimension dimension) {
+        JFrame frame = new JFrame();
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setLayout(new BorderLayout());
+        frame.setResizable(false);
+        if (title != null) frame.setTitle(title);
+        if (dimension != null) frame.setPreferredSize(dimension);
+        if (contentPane != null) frame.getContentPane().add(contentPane, BorderLayout.CENTER);
+        return frame;
     }
 
     @Override
