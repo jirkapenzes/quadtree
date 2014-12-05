@@ -14,7 +14,7 @@ import com.jpenzes.tree.Rectangle;
 public class QuadTreeModel extends SModel {
 
     public static int SpeedFast = 10;
-    public static int SpeedSlow = 300;
+    public static int SpeedSlow = 200;
 
     private Scene<? extends Geometry2DObject> scene;
     private Rectangle bounds;
