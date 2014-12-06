@@ -73,6 +73,7 @@ public class MenuController extends SController<MenuView, MenuModel> {
         getView().getStartButton().setEnabled(start);
         getView().getPauseButton().setEnabled(pause);
         getView().getClearButton().setEnabled(clear);
+        getMainFrame().getView(QuadTreeView.class).getContentPane().requestFocus();
     }
 
     private void changeSpeed(int speed) {

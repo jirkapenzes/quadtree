@@ -5,6 +5,7 @@ import com.jpenzes.app.model.QuadTreeModel;
 import com.jpenzes.app.scenarious.collisions.BigScene;
 import com.jpenzes.app.scenarious.collisions.SmallScene;
 import com.jpenzes.app.scenarious.gol.GameOfLifeScene;
+import com.jpenzes.app.util.BearInjector;
 import com.jpenzes.app.view.QuadTreeView;
 import com.jpenzes.smawing.SController;
 import com.jpenzes.smawing.SFrame;
@@ -23,6 +24,7 @@ public class QuadTreeController extends SController<QuadTreeView, QuadTreeModel>
     @Override
     protected void initialize() {
         getModel().getScene().initialize();
+        new BearInjector(getView().getContentPane()).activate();
     }
 
     public void actionStart() {
