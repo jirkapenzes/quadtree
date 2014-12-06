@@ -49,9 +49,8 @@ public class GameOfLifeScene extends Scene<Cell> {
         HashSet<Cell> newGeneration = new HashSet<>();
         HashSet<Cell> deadCells = new HashSet<>();
 
-        for (Cell cell : liveCells) {
+        for (Cell cell : liveCells)
             getQuadTree().insert(cell);
-        }
 
         for (Cell cell : liveCells) {
             int numberOfNeighbours = getNumberOfNeighbours(cell);
@@ -70,6 +69,10 @@ public class GameOfLifeScene extends Scene<Cell> {
         }
 
         liveCells = newGeneration;
+
+        cleanQuadTree();
+        for (Cell cell : liveCells)
+            getQuadTree().insert(cell);
     }
 
     private Collection<? extends Cell> findDeadNeighboursCells(Cell cell) {
