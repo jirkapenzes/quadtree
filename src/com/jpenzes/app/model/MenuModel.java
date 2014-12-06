@@ -14,9 +14,10 @@ public class MenuModel extends SModel {
     private boolean isGrid;
     private boolean isCellBackgroundColor;
 
-    public static String GameOfLife = "Game of life";
+    public static String GameOfLifeRandom = "Game of life";
     public static String Collisions = "Collisions";
     public static String Simple = "Simple collisions";
+    public static String GunCellularAutomaton = "Gun Cellular Automaton";
 
     public MenuModel() {
         uiLabels = new HashMap<>();
@@ -25,7 +26,7 @@ public class MenuModel extends SModel {
         getUiLabels().put("clearButton.label", "Clear");
         getUiLabels().put("gridCheckbox.label", "Show grid");
         getUiLabels().put("colorCheckbox.label", "Show color");
-        getUiLabels().put("sceneComboBox.values", new String[]{Collisions, GameOfLife, Simple});
+        getUiLabels().put("sceneComboBox.values", new String[]{Collisions, Simple, GameOfLifeRandom, GunCellularAutomaton});
         getUiLabels().put("speedFastRadioButton.label", "Speed fast");
         getUiLabels().put("speedSlowRadioButton.label", "Speed slow");
 

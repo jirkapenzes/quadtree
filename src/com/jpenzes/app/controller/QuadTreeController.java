@@ -4,7 +4,8 @@ import com.jpenzes.app.model.MenuModel;
 import com.jpenzes.app.model.QuadTreeModel;
 import com.jpenzes.app.scenarious.collisions.BigScene;
 import com.jpenzes.app.scenarious.collisions.SmallScene;
-import com.jpenzes.app.scenarious.gol.GameOfLifeScene;
+import com.jpenzes.app.scenarious.gol.GoFRandomScene;
+import com.jpenzes.app.scenarious.gol.GunCellularAutomaton;
 import com.jpenzes.app.util.BearInjector;
 import com.jpenzes.app.view.QuadTreeView;
 import com.jpenzes.smawing.SController;
@@ -52,8 +53,11 @@ public class QuadTreeController extends SController<QuadTreeView, QuadTreeModel>
         if (sceneName.equals(MenuModel.Simple))
             getModel().setScene(new SmallScene(bounds));
 
-        if (sceneName.equals(MenuModel.GameOfLife))
-            getModel().setScene(new GameOfLifeScene(bounds));
+        if (sceneName.equals(MenuModel.GameOfLifeRandom))
+            getModel().setScene(new GoFRandomScene(bounds, 500));
+        
+        if (sceneName.equals(MenuModel.GunCellularAutomaton))
+            getModel().setScene(new GunCellularAutomaton(bounds));
 
         getModel().getScene().initialize();
     }
