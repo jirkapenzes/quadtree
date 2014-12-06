@@ -13,10 +13,10 @@ import java.util.Random;
  * Author: Jirka Penzes
  * Date: 12/4/14 6:22 PM
  */
-public class GameOfLifeScene extends Scene<Cell> {
+public abstract class GameOfLifeScene extends Scene<Cell> {
 
-    private final int gridSize = 16;
-    private HashSet<Cell> liveCells;
+    protected final int gridSize = 16;
+    protected HashSet<Cell> liveCells;
     private int worldWidth;
     private int worldHeight;
 
@@ -25,23 +25,6 @@ public class GameOfLifeScene extends Scene<Cell> {
 
         worldWidth = getBounds().getWidth() / gridSize;
         worldHeight = getBounds().getHeight() / gridSize;
-    }
-
-    @Override
-    public void initialize() {
-        liveCells = new HashSet<>();
-
-        Random r = new Random(0);
-        for (int i = 0; i < 500; i++) {
-            int x = r.nextInt(getBounds().getWidth() / gridSize);
-            int y = r.nextInt(getBounds().getHeight() / gridSize);
-
-            liveCells.add(makeCell(x, y));
-        }
-    }
-
-    private Cell makeCell(int x, int y) {
-        return new Cell(x, y, gridSize);
     }
 
     @Override
@@ -105,25 +88,25 @@ public class GameOfLifeScene extends Scene<Cell> {
         int result = 0;
         Rectangle rectangle = new Rectangle(cell.getPoint().getX() - (gridSize), cell.getPoint().getY() - (gridSize), gridSize * 2 + 1, gridSize * 2 + 1);
         if (rectangle.getX() <= 0) {
-            Cell tmpCell = makeCell(worldWidth - 1, cell.getWorldPoint().getY());
+            Cell tmpCell = new Cell(worldWidth - 1, cell.getWorldPoint().getY(), gridSize);
             Rectangle tmpRectangle = new Rectangle(tmpCell.getPoint().getX() - (gridSize / 4), tmpCell.getPoint().getY() - gridSize, gridSize / 2, gridSize * 2);
             result += getQuadTree().find(tmpRectangle).size();
         }
 
         if ((rectangle.getX() + rectangle.getWidth()) >= worldWidth) {
-            Cell tmpCell = makeCell(0, cell.getWorldPoint().getY());
+            Cell tmpCell = new Cell(0, cell.getWorldPoint().getY(), gridSize);
             Rectangle tmpRectangle = new Rectangle(tmpCell.getPoint().getX() - (gridSize / 4), tmpCell.getPoint().getY() - gridSize, gridSize / 2, gridSize * 2);
             result += getQuadTree().find(tmpRectangle).size();
         }
 
         if (rectangle.getX() <= 0) {
-            Cell tmpCell = makeCell(cell.getWorldPoint().getX(), worldHeight - 1);
+            Cell tmpCell = new Cell(cell.getWorldPoint().getX(), worldHeight - 1, gridSize);
             Rectangle tmpRectangle = new Rectangle(tmpCell.getPoint().getX() - gridSize, tmpCell.getPoint().getY() - (gridSize / 4), gridSize * 2, gridSize / 2);
             result += getQuadTree().find(tmpRectangle).size();
         }
 
         if ((rectangle.getY() + rectangle.getHeight()) >= worldHeight) {
-            Cell tmpCell = makeCell(cell.getWorldPoint().getX(), 0);
+            Cell tmpCell = new Cell(cell.getWorldPoint().getX(), 0, gridSize);
             Rectangle tmpRectangle = new Rectangle(tmpCell.getPoint().getX() - gridSize, tmpCell.getPoint().getY() - (gridSize / 4), gridSize * 2, gridSize / 2);
             result += getQuadTree().find(tmpRectangle).size();
         }
