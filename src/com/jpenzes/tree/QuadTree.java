@@ -110,10 +110,9 @@ public class QuadTree<Element extends Geometry2DObject> {
                 .collect(Collectors.toList()));
 
         if (hasNodes()) {
-            results.addAll(nodes.get(Quadrant.TopLeft).find(rectangle));
-            results.addAll(nodes.get(Quadrant.TopRight).find(rectangle));
-            results.addAll(nodes.get(Quadrant.BottomLeft).find(rectangle));
-            results.addAll(nodes.get(Quadrant.BottomRight).find(rectangle));
+            for (Quadrant quadrant : Quadrant.values()) {
+                results.addAll(nodes.get(quadrant).find(rectangle));
+            }
         }
         return results;
     }
