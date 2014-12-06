@@ -48,17 +48,20 @@ public class MenuController extends SController<MenuView, MenuModel> {
         getView().getGridCheckbox().addActionListener(e -> {
             getModel().setGrid(getView().getGridCheckbox().isSelected());
             getMainFrame().getView(QuadTreeView.class).updateView();
+            resetFocus();
         });
 
         getView().getColorCheckbox().addActionListener(e -> {
             getModel().setCellBackgroundColor(getView().getColorCheckbox().isSelected());
             getMainFrame().getView(QuadTreeView.class).updateView();
+            resetFocus();
         });
 
         getView().getSpeedFastRadioButton().addActionListener(e -> {
             if (getView().getSpeedFastRadioButton().isSelected()) {
                 changeSpeed(QuadTreeModel.SpeedFast);
             }
+            resetFocus();
         });
 
 
@@ -66,6 +69,7 @@ public class MenuController extends SController<MenuView, MenuModel> {
             if (getView().getSpeedSlowRadioButton().isSelected()) {
                 changeSpeed(QuadTreeModel.SpeedSlow);
             }
+            resetFocus();
         });
     }
 
@@ -73,11 +77,15 @@ public class MenuController extends SController<MenuView, MenuModel> {
         getView().getStartButton().setEnabled(start);
         getView().getPauseButton().setEnabled(pause);
         getView().getClearButton().setEnabled(clear);
-        getMainFrame().getView(QuadTreeView.class).getContentPane().requestFocus();
+        resetFocus();
     }
 
     private void changeSpeed(int speed) {
         getMainFrame().getModel(QuadTreeModel.class).setSpeed(speed);
         getMainFrame().getController(QuadTreeController.class).changeSpeed(speed);
+    }
+
+    private void resetFocus() {
+        getMainFrame().getView(QuadTreeView.class).getContentPane().requestFocus();
     }
 }
