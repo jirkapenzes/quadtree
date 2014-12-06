@@ -31,7 +31,8 @@ public abstract class Scene<Data extends Geometry2DObject> extends Observable {
 
         new Thread(() -> {
             while (running) {
-                process(getQuadTree());
+                cleanQuadTree();
+                process();
                 setChanged();
                 notifyObservers();
                 ThreadHelper.sleep(millis);
@@ -50,7 +51,7 @@ public abstract class Scene<Data extends Geometry2DObject> extends Observable {
         running = false;
     }
 
-    public abstract void process(QuadTree<Data> quadTree);
+    public abstract void process();
 
     public abstract void drawScene(Graphics2D graphics2D);
 

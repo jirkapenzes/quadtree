@@ -45,11 +45,10 @@ public class GameOfLifeScene extends Scene<Cell> {
     }
 
     @Override
-    public void process(QuadTree<Cell> quadTree) {
+    public void process() {
         HashSet<Cell> newGeneration = new HashSet<>();
         HashSet<Cell> deadCells = new HashSet<>();
 
-        cleanQuadTree();
         for (Cell cell : liveCells) {
             getQuadTree().insert(cell);
         }

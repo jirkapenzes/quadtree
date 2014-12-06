@@ -30,9 +30,7 @@ public abstract class CollisionScene extends Scene<Ball> {
     }
 
     @Override
-    public synchronized void process(QuadTree<Ball> quadTree) {
-        cleanQuadTree();
-
+    public synchronized void process() {
         for (Ball ball : balls) {
             ball.move(getBounds());
             getQuadTree().insert(ball);
