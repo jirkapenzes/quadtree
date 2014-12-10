@@ -1,26 +1,22 @@
 package com.jpenzes.app.scenarious.collisions;
 
-import com.jpenzes.app.scenarious.Scene;
-import com.jpenzes.tree.*;
+import com.jpenzes.app.scenarious.balls.Ball;
+import com.jpenzes.app.scenarious.balls.BallsScene;
 import com.jpenzes.tree.Rectangle;
 
 import java.awt.*;
-import java.util.ArrayList;
 import java.util.HashSet;
 
 /**
  * Author: Jirka Penzes
  * Date: 12/1/14 4:22 PM
  */
-public abstract class CollisionScene extends Scene<Ball> {
+public abstract class CollisionScene extends BallsScene {
 
-    private ArrayList<Ball> balls;
     private HashSet<Collision> collisions;
 
     public CollisionScene(Rectangle bounds) {
         super(bounds);
-
-        this.balls = new ArrayList<>();
         this.collisions = new HashSet<>();
     }
 
@@ -31,13 +27,10 @@ public abstract class CollisionScene extends Scene<Ball> {
 
     @Override
     public synchronized void process() {
-        for (Ball ball : balls) {
-            ball.move(getBounds());
-            getQuadTree().insert(ball);
-        }
+        super.process();
 
         HashSet<Ball> collisionBalls;
-        for (Ball ball : balls) {
+        for (Ball ball : getBalls()) {
             Rectangle rectangle = new Rectangle(ball.getPoint().getX() - 5, ball.getPoint().getY() - 5, 10, 10);
 
             collisionBalls = getQuadTree().find(rectangle);
@@ -60,16 +53,10 @@ public abstract class CollisionScene extends Scene<Ball> {
 
     @Override
     public synchronized void drawScene(Graphics2D graphics2D) {
-        for (Ball ball : balls) {
-            ball.draw(graphics2D);
-        }
+        super.drawScene(graphics2D);
 
         for (Collision collision : collisions) {
             collision.draw(graphics2D);
         }
-    }
-
-    protected ArrayList<Ball> getBalls() {
-        return balls;
     }
 }

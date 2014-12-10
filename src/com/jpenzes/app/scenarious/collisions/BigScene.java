@@ -1,5 +1,6 @@
 package com.jpenzes.app.scenarious.collisions;
 
+import com.jpenzes.app.scenarious.balls.Ball;
 import com.jpenzes.tree.Rectangle;
 
 import java.util.Random;

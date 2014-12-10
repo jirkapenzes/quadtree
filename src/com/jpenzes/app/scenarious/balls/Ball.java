@@ -1,4 +1,4 @@
-package com.jpenzes.app.scenarious.collisions;
+package com.jpenzes.app.scenarious.balls;
 
 import com.jpenzes.tree.Geometry2DObject;
 import com.jpenzes.tree.Rectangle;
