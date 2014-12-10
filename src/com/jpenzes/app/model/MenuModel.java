@@ -30,8 +30,8 @@ public class MenuModel extends SModel {
         getUiLabels().put("speedFastRadioButton.label", "Speed fast");
         getUiLabels().put("speedSlowRadioButton.label", "Speed slow");
 
-        setGrid(true);
-        setCellBackgroundColor(false);
+        setGrid(false);
+        setCellBackgroundColor(true);
     }
 
     public HashMap<String, Object> getUiLabels() {

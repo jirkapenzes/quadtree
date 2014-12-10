@@ -40,8 +40,8 @@ public class QuadTreePanel extends JPanel implements Observer {
 
     private void initializeUI() {
         setBackground(new Color(255, 255, 255));
-        setGrid(true);
-        setCellBackgroundColor(false);
+        setGrid(false);
+        setCellBackgroundColor(true);
     }
 
     @Override
