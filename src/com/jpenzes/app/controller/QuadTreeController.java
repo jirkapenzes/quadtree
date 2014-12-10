@@ -2,6 +2,7 @@ package com.jpenzes.app.controller;
 
 import com.jpenzes.app.model.MenuModel;
 import com.jpenzes.app.model.QuadTreeModel;
+import com.jpenzes.app.scenarious.balls.RandomBallsScene;
 import com.jpenzes.app.scenarious.collisions.BigScene;
 import com.jpenzes.app.scenarious.collisions.SmallScene;
 import com.jpenzes.app.scenarious.gol.GoFRandomScene;
@@ -47,6 +48,9 @@ public class QuadTreeController extends SController<QuadTreeView, QuadTreeModel>
         actionReset();
 
         Rectangle bounds = getModel().getBounds();
+        if (sceneName.equals(MenuModel.OnlyBalls))
+            getModel().setScene(new RandomBallsScene(bounds));
+
         if (sceneName.equals(MenuModel.Collisions))
             getModel().setScene(new BigScene(bounds));
 
@@ -55,7 +59,7 @@ public class QuadTreeController extends SController<QuadTreeView, QuadTreeModel>
 
         if (sceneName.equals(MenuModel.GameOfLifeRandom))
             getModel().setScene(new GoFRandomScene(bounds, 500));
-        
+
         if (sceneName.equals(MenuModel.GunCellularAutomaton))
             getModel().setScene(new GunCellularAutomaton(bounds));
 

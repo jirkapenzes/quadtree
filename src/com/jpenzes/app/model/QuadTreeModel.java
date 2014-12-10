@@ -1,8 +1,7 @@
 package com.jpenzes.app.model;
 
-import com.jpenzes.app.scenarious.collisions.BigScene;
+import com.jpenzes.app.scenarious.balls.RandomBallsScene;
 import com.jpenzes.app.scenarious.Scene;
-import com.jpenzes.app.scenarious.gol.GameOfLifeScene;
 import com.jpenzes.smawing.SModel;
 import com.jpenzes.tree.Geometry2DObject;
 import com.jpenzes.tree.Rectangle;
@@ -24,7 +23,7 @@ public class QuadTreeModel extends SModel {
         bounds = new Rectangle(1024, 512);
 
         setSpeed(SpeedFast);
-        setScene(new BigScene(bounds));
+        setScene(new RandomBallsScene(bounds));
     }
 
     public Scene<? extends Geometry2DObject> getScene() {
